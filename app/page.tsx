@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div className="flex justify-center items-center h-screen flex-col gap-4">
-      <h1 className="text-xl md:text-2xl font-extrabold">
+      <h1 className="text-xl md:text-2xl font-extrabold select-none">
         {characters.map((char, index) => (
           <motion.span
             key={index}

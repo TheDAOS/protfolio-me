@@ -3,7 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import PaperBackground from "../components/PaperBackground";
+
 
 const fraunces = Fraunces({
   variable: "--font-title",
@@ -32,7 +32,6 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${inter.variable} relative`}
       >
-        <PaperBackground />
         {/* antialiased */}
         {children}
         <SpeedInsights />

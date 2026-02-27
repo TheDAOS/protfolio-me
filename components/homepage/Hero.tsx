@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { JSX } from "react";
+import portfolioHero from "@/public/images/home_page/portfolio_hero.png"
 
 const Hero = (): JSX.Element => {
 
@@ -42,10 +43,31 @@ const Hero = (): JSX.Element => {
             </div>
 
             <Image
-                src="/images/home_page/portfolio_hero.png"
+                src={portfolioHero}
+                // src="/images/home_page/portfolio_hero.png"
                 alt="portfolio_hero"
                 className="w-full -mt-10"
+                width={1920}
+                height={1080}
+                placeholder="blur"
             />
+
+
+            <div className="h-16 flex flex-col justify-between absolute w-full bottom-52">
+                <div className="w-[90%] h-0.75 bg-not-black rounded-full mx-auto" />
+                <div className="flex justify-between w-[93%] mx-auto uppercase">
+                    <span>Projects</span>
+                    <span className="font-bold">Experience</span>
+                    <span>Skill</span>
+                    <span>
+                        <span className="font-bold">Tech</span>
+                        <span className="ms-1">Stack</span>
+                    </span>
+                    <span>About</span>
+                    <span className="font-bold">Contact</span>
+                </div>
+                <div className="w-[90%] h-0.75 bg-not-black rounded-full mx-auto" />
+            </div>
         </div>
     )
 }

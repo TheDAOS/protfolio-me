@@ -7,6 +7,8 @@
 @theme {
   --font-title: var(--font-title);
   --font-body: var(--font-body);
+  --color-not-black: #2e2a26;
+  --color-paper: #f3ede2;
 }
 
 html, body {

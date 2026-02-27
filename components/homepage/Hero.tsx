@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { JSX } from "react";
-import portfolio_hero from "@/Images/home_page/portfolio_hero.png";
 
 const Hero = (): JSX.Element => {
 
@@ -43,7 +42,7 @@ const Hero = (): JSX.Element => {
             </div>
 
             <Image
-                src={portfolio_hero}
+                src="/images/home_page/portfolio_hero.png"
                 alt="portfolio_hero"
                 className="w-full -mt-10"
             />

@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f0f0f0;
+  --foreground: #000000;
+  
+  --neo-yellow: #facc15;
+  --neo-pink: #f472b6;
+  --neo-cyan: #22d3ee;
+  --neo-green: #4ade80;
+  --neo-border: 4px;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-neo-yellow: var(--neo-yellow);
+  --color-neo-pink: var(--neo-pink);
+  --color-neo-cyan: var(--neo-cyan);
+  --color-neo-green: var(--neo-green);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+::selection {
+  background: var(--neo-pink);
+  color: black;
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+@utility neo-shadow {
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+@utility neo-shadow-lg {
+  box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+}
+
+@utility neo-border {
+  border-width: var(--neo-border);
+  border-color: black;
 }

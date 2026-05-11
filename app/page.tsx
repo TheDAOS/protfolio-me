@@ -57,8 +57,6 @@ const Home = () => {
 
   const { View: CatView } = useLottie(lottieOptions);
 
-  const welcomeText = "SOFTWARE DEVELOPER";
-
   return (
     <main ref={containerRef} className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8">
       <Nav />
@@ -76,17 +74,32 @@ const Home = () => {
           </motion.div>
           
           <h1 className="text-5xl md:text-8xl font-black leading-[0.9] tracking-tighter uppercase break-words">
-            {welcomeText.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.03, type: "spring", stiffness: 300 }}
-                className="inline-block"
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
+            <span className="flex flex-nowrap">
+              {"SOFTWARE".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.03, type: "spring", stiffness: 300 }}
+                  className="inline-block"
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </span>
+            <span className="flex flex-nowrap">
+              {"DEVELOPER".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.03, type: "spring", stiffness: 300 }}
+                  className="inline-block"
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </span>
           </h1>
           
           <p className="text-lg md:text-xl font-bold max-w-md mx-auto md:mx-0 leading-tight">
@@ -130,7 +143,7 @@ const Home = () => {
       </div>
 
       {/* Projects Section */}
-      <section id="projects" className="max-w-6xl mx-auto mb-20 md:mb-32">
+      <section id="projects" className="max-w-6xl mx-auto mb-20 md:mb-32 scroll-mt-24 md:scroll-mt-32">
         <SectionTitle>Selected Works</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <ProjectCard 

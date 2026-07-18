@@ -54,10 +54,12 @@ const SectionTitle = ({
 const ProjectCard = ({
   title,
   desc,
+  tags,
   color,
 }: {
   title: string;
   desc: string;
+  tags: string[];
   color: string;
 }) => (
   <motion.div
@@ -71,12 +73,14 @@ const ProjectCard = ({
     <h3 className="text-xl md:text-2xl font-black uppercase">{title}</h3>
     <p className="font-medium leading-tight text-sm md:text-base">{desc}</p>
     <div className="mt-auto flex flex-wrap gap-2">
-      <span className="text-[10px] md:text-xs font-bold px-2 py-1 bg-white neo-border uppercase">
-        React
-      </span>
-      <span className="text-[10px] md:text-xs font-bold px-2 py-1 bg-white neo-border uppercase">
-        TS
-      </span>
+      {tags.map((tag, index) => (
+        <span
+          key={index}
+          className="text-[10px] md:text-xs font-bold px-2 py-1 bg-white neo-border uppercase"
+        >
+          {tag}
+        </span>
+      ))}
     </div>
   </motion.div>
 );
@@ -94,7 +98,7 @@ const Home = () => {
 
   const { View: CatView } = useLottie(lottieOptions);
 
-  const welcomeText = "SOFTWARE DEVELOPER";
+  const welcomeText = "FRONTEND DEVELOPER";
 
   return (
     <main
@@ -148,7 +152,8 @@ const Home = () => {
           </h1>
 
           <p className="text-lg md:text-xl font-bold max-w-md mx-auto md:mx-0 leading-tight">
-            Building digital things that are fun, fast, and slightly chaotic.
+            Building fast, responsive web applications and high-performance
+            mobile experiences for iOS and Android.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -179,34 +184,46 @@ const Home = () => {
             <span key={i} className="flex gap-8 md:gap-12 items-center">
               <span>Next.js</span>
               <span className="text-neo-yellow">★</span>
-              <span>TypeScript</span>
+              <span>Swift</span>
               <span className="text-neo-pink">★</span>
-              <span>Tailwind</span>
+              <span>React Native</span>
               <span className="text-neo-cyan">★</span>
-              <span>Node.js</span>
+              <span>TypeScript</span>
               <span className="text-neo-green">★</span>
+              <span>Flutter</span>
+              <span className="text-neo-yellow">★</span>
+              <span>Node.js</span>
+              <span className="text-neo-pink">★</span>
+              <span>Kotlin</span>
+              <span className="text-neo-cyan">★</span>
             </span>
           ))}
         </motion.div>
       </div>
 
       {/* Projects Section */}
-      <section id="projects" className="max-w-6xl mx-auto mb-20 md:mb-32 scroll-mt-24 md:scroll-mt-32">
+      <section
+        id="projects"
+        className="max-w-6xl mx-auto mb-20 md:mb-32 scroll-mt-24 md:scroll-mt-32"
+      >
         <SectionTitle>Selected Works</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <ProjectCard
-            title="Quirky App"
-            desc="A chaotic productivity tool for people who hate being productive."
+            title="SoundByte Mobile"
+            desc="A clean audio recording and voice-journaling app with native audio processing features."
+            tags={["Flutter", "Swift", "Dart"]}
             color="bg-neo-yellow"
           />
           <ProjectCard
-            title="Cyber Cat"
-            desc="An AI that translates your cat's meows into SQL queries."
+            title="Cyber Cat Analytics"
+            desc="A full-stack web dashboard that uses AI to map user behavior databases with real-time updates."
+            tags={["Next.js", "TS", "Tailwind"]}
             color="bg-neo-cyan"
           />
           <ProjectCard
-            title="Glitchy Bot"
-            desc="A chatbot that only speaks in 90s internet slang and emojis."
+            title="FitTrack Pro"
+            desc="A native Android fitness tracker leveraging native sensor APIs and Health Connect integration."
+            tags={["Kotlin", "Android", "Compose"]}
             color="bg-neo-pink"
           />
         </div>

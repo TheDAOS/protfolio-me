@@ -191,7 +191,7 @@ const Home = () => {
       </div>
 
       {/* Projects Section */}
-      <section id="projects" className="max-w-6xl mx-auto mb-20 md:mb-32">
+      <section id="projects" className="max-w-6xl mx-auto mb-20 md:mb-32 scroll-mt-24 md:scroll-mt-32">
         <SectionTitle>Selected Works</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <ProjectCard

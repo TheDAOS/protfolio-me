@@ -174,11 +174,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Skills Marquee */}
-      <div className="bg-black py-3 md:py-4 border-y-4 border-black overflow-hidden flex whitespace-nowrap mb-20 md:mb-32 -mx-4 md:-mx-8">
+      <div className="bg-black py-3 md:py-4 border-y-4 border-black overflow-hidden whitespace-nowrap mb-20 md:mb-32 -mx-4 md:-mx-8">
         <motion.div
           style={{ x }}
-          className="flex gap-8 md:gap-12 text-white font-black text-2xl md:text-4xl uppercase items-center"
+          className="inline-flex gap-8 md:gap-12 text-white font-black text-2xl md:text-4xl uppercase items-center"
         >
           {[...Array(10)].map((_, i) => (
             <span key={i} className="flex gap-8 md:gap-12 items-center">

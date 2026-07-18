@@ -88,7 +88,7 @@ const ProjectCard = ({
 const Home = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
-  const x = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -1200]);
 
   const lottieOptions = {
     animationData: (cat as { default?: unknown }).default ?? cat,
@@ -210,19 +210,19 @@ const Home = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <ProjectCard
             title="SoundByte Mobile"
-            desc="A clean audio recording and voice-journaling app with native audio processing features."
+            desc="A voice-journaling app that auto-tunes your morning grumbles into beautiful podcast episodes."
             tags={["Flutter", "Swift", "Dart"]}
             color="bg-neo-yellow"
           />
           <ProjectCard
             title="Cyber Cat Analytics"
-            desc="A full-stack web dashboard that uses AI to map user behavior databases with real-time updates."
+            desc="A database analytics tool that translates your cat's meows into optimized SQL queries."
             tags={["Next.js", "TS", "Tailwind"]}
             color="bg-neo-cyan"
           />
           <ProjectCard
             title="FitTrack Pro"
-            desc="A native Android fitness tracker leveraging native sensor APIs and Health Connect integration."
+            desc="A native Android tracker that yells Kotlin syntax errors at you if you stop walking."
             tags={["Kotlin", "Android", "Compose"]}
             color="bg-neo-pink"
           />

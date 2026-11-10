@@ -2,8 +2,7 @@
 
 import { useLottie } from "lottie-react";
 import * as cat from "@/lottie/cat.json";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 const Nav = () => (
   <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl">
@@ -86,10 +85,6 @@ const ProjectCard = ({
 );
 
 const Home = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const x = useTransform(scrollYProgress, [0, 1], [0, -1200]);
-
   const lottieOptions = {
     animationData: (cat as { default?: unknown }).default ?? cat,
     loop: true,
@@ -102,7 +97,6 @@ const Home = () => {
 
   return (
     <main
-      ref={containerRef}
       className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8"
     >
       <Nav />
@@ -175,12 +169,13 @@ const Home = () => {
       </section>
 
       <div className="bg-black py-3 md:py-4 border-y-4 border-black overflow-hidden whitespace-nowrap mb-20 md:mb-32 -mx-4 md:-mx-8">
-        <motion.div
-          style={{ x }}
-          className="inline-flex gap-8 md:gap-12 text-white font-black text-2xl md:text-4xl uppercase items-center"
+        <div
+          role="img"
+          aria-label="Technologies: Next.js, Swift, React Native, TypeScript, Flutter, Node.js, Kotlin"
+          className="tech-strip inline-flex gap-8 md:gap-12 text-white font-black text-2xl md:text-4xl uppercase items-center"
         >
-          {[...Array(10)].map((_, i) => (
-            <span key={i} className="flex gap-8 md:gap-12 items-center">
+          {[...Array(4)].map((_, i) => (
+            <span key={i} aria-hidden="true" className="flex gap-8 md:gap-12 items-center">
               <span>Next.js</span>
               <span className="text-neo-yellow">★</span>
               <span>Swift</span>
@@ -197,7 +192,7 @@ const Home = () => {
               <span className="text-neo-cyan">★</span>
             </span>
           ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Projects Section */}

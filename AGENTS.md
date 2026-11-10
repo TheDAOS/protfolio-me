@@ -2,7 +2,7 @@
 
 Read `STATE.md`, `docs/AI_MEMORY.md`, and `docs/ARCHITECTURE.md` before changes. If a graph exists, consult `graphify-out/` when useful. Preserve the current visual identity and existing integrations unless the user requests a change. The three project cards are dummy data; never present them as real projects.
 
-- Never push to a remote without explicit user approval.
+- Never push to a remote without explicit user approval. Before pushing or merging, inspect applicable branch protection and repository rules. Follow the required workflow; never bypass a rule without warning the user and receiving explicit approval for that specific bypass. Approval to push alone does not authorize a bypass.
 - Prefer free tooling and local development. The existing public website uses Vercel Analytics, Speed Insights and Google-hosted build-time fonts; do not claim it is fully offline or remove integrations without a request. Do not add paid services or new telemetry without approval.
 - Use deterministic tests for application logic and verify relevant changes with `npm run lint`, `npx tsc --noEmit`, and `./scripts/smoke.sh`; run a production build when feasible. For visual changes inspect responsive layouts and accessibility.
 - Keep `STATE.md` and project context current when behavior or decisions change. Do not invent personal information or project details.

@@ -1,0 +1,18 @@
+{
+  "project": "protfolio-me",
+  "created_at": "2026-11-10",
+  "stack": "web-node",
+  "yggdrasil_modules": [
+    "core-charter",
+    "gates-pack",
+    "graphify-pack",
+    "memory-pack",
+    "skills-pack"
+  ],
+  "idea_id": null,
+  "preferences": {
+    "git_push_boundary": "never_without_explicit_approval",
+    "tdd_required": true,
+    "existing_integrations": "Vercel Analytics and Speed Insights; Google fonts"
+  }
+}

@@ -1,0 +1,9 @@
+---
+description: Core architectural and governance rules for protfolio-me
+globs: *
+alwaysApply: true
+---
+
+- Read `AGENTS.md` and `STATE.md` before making changes.
+- Respect the Git Push Boundary: local atomic commits are allowed, NEVER push to remote without explicit user approval.
+- Follow Red-Green-Refactor TDD and verify with `./scripts/smoke.sh`.

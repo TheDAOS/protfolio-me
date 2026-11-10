@@ -2,6 +2,8 @@
 
 Personal portfolio for Sanju, built with Next.js 16 App Router, React 19, TypeScript and Tailwind CSS 4. The site is a single animated, neo-brutalist page; the three displayed project cards are **dummy data**, per the owner. Repository: `TheDAOS/protfolio-me`.
 
+Working branch: `pe-2`, locally fast-forwarded to `main` on 2026-11-10. Respect branch protection; use the required review workflow.
+
 ## Current behavior
 - Hero, animated cat, scroll-driven technology strip, project cards, contact/social links and footer all live in `app/page.tsx`.
 - `app/layout.tsx` supplies metadata, Geist fonts and existing Vercel Analytics/Speed Insights. `app/robots.ts` and `app/sitemap.ts` refer to `https://sanju.fyi`.

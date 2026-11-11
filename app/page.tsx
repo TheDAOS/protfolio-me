@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 const Nav = () => (
   <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl">
     <div className="bg-white neo-border neo-shadow px-4 md:px-6 py-2 md:py-3 flex justify-between items-center">
-      <span className="font-extrabold text-lg md:text-xl tracking-tighter italic">
+      <a href="#top" className="font-extrabold text-lg md:text-xl tracking-tighter italic">
         Sanju
-      </span>
+      </a>
       <div className="flex gap-4 md:gap-6 font-bold text-xs md:text-sm">
         <a
           href="#projects"
@@ -97,6 +97,7 @@ const Home = () => {
 
   return (
     <main
+      id="top"
       className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8"
     >
       <Nav />

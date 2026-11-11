@@ -52,13 +52,24 @@ body {
   border-color: black;
 }
 
-/* Keep the scrolling strip off the JavaScript scroll loop. Unsupported browsers
-   and reduced-motion settings show the same content without movement. */
+/* Use native scroll animation when available. Mobile browsers without it and
+   visitors who prefer reduced motion see the strip without movement. */
 @supports (animation-timeline: scroll(root block)) {
   @media (prefers-reduced-motion: no-preference) {
     .tech-strip {
       animation: tech-scroll linear both;
       animation-timeline: scroll(root block);
+    }
+  }
+}
+
+/* Firefox requires a nonzero duration for scroll-driven CSS animations. */
+@media (min-width: 768px) {
+  @supports (animation-timeline: scroll(root block)) {
+    @media (prefers-reduced-motion: no-preference) {
+      .tech-strip {
+        animation-duration: 1ms;
+      }
     }
   }
 }

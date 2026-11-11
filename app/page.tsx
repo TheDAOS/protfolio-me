@@ -3,13 +3,15 @@
 import { useLottie } from "lottie-react";
 import * as cat from "@/lottie/cat.json";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { setupDesktopStripFallback } from "./tech-strip-fallback.mjs";
 
 const Nav = () => (
   <nav className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl">
     <div className="bg-white neo-border neo-shadow px-4 md:px-6 py-2 md:py-3 flex justify-between items-center">
-      <span className="font-extrabold text-lg md:text-xl tracking-tighter italic">
+      <a href="#top" className="font-extrabold text-lg md:text-xl tracking-tighter italic">
         Sanju
-      </span>
+      </a>
       <div className="flex gap-4 md:gap-6 font-bold text-xs md:text-sm">
         <a
           href="#projects"
@@ -85,6 +87,13 @@ const ProjectCard = ({
 );
 
 const Home = () => {
+  const techStripRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!techStripRef.current) return;
+    return setupDesktopStripFallback(window, techStripRef.current);
+  }, []);
+
   const lottieOptions = {
     animationData: (cat as { default?: unknown }).default ?? cat,
     loop: true,
@@ -97,6 +106,7 @@ const Home = () => {
 
   return (
     <main
+      id="top"
       className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-8"
     >
       <Nav />
@@ -170,8 +180,9 @@ const Home = () => {
 
       <div className="bg-black py-3 md:py-4 border-y-4 border-black overflow-hidden whitespace-nowrap mb-20 md:mb-32 -mx-4 md:-mx-8">
         <div
+          ref={techStripRef}
           role="img"
-          aria-label="Technologies: Next.js, Swift, React Native, TypeScript, Flutter, Node.js, Kotlin"
+          aria-label="Technologies: Next.js, Swift, TypeScript, Flutter, Node.js, Kotlin, React Native"
           className="tech-strip inline-flex gap-8 md:gap-12 text-white font-black text-2xl md:text-4xl uppercase items-center"
         >
           {[...Array(4)].map((_, i) => (
@@ -180,8 +191,6 @@ const Home = () => {
               <span className="text-neo-yellow">★</span>
               <span>Swift</span>
               <span className="text-neo-pink">★</span>
-              <span>React Native</span>
-              <span className="text-neo-cyan">★</span>
               <span>TypeScript</span>
               <span className="text-neo-green">★</span>
               <span>Flutter</span>
@@ -189,6 +198,8 @@ const Home = () => {
               <span>Node.js</span>
               <span className="text-neo-pink">★</span>
               <span>Kotlin</span>
+              <span className="text-neo-cyan">★</span>
+              <span>React Native</span>
               <span className="text-neo-cyan">★</span>
             </span>
           ))}
@@ -223,10 +234,36 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About / Contact */}
+      {/* About */}
       <section
         id="about"
-        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20 scroll-mt-24"
+        className="max-w-6xl mx-auto mb-20 md:mb-32 scroll-mt-24 md:scroll-mt-32"
+      >
+        <SectionTitle color="bg-neo-cyan">About Me</SectionTitle>
+        <div className="bg-white neo-border neo-shadow-lg p-6 md:p-10">
+          <p className="text-xl md:text-3xl font-black leading-tight max-w-3xl">
+            Hey, I&apos;m Sanju.
+          </p>
+          <p className="mt-5 text-base md:text-lg font-medium leading-relaxed max-w-3xl">
+            I&apos;m a frontend developer at{" "}
+            <a
+              href="https://coinswitch.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold underline decoration-neo-cyan decoration-2 underline-offset-4 hover:decoration-neo-pink focus-visible:outline-2 focus-visible:outline-offset-4"
+            >
+              CoinSwitch
+            </a>
+            . I enjoy tinkering with computers, exploring new ideas, and building
+            things along the way.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section
+        aria-label="Contact"
+        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20"
       >
         <div
           id="contact"

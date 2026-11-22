@@ -62,6 +62,7 @@ const ProjectCard = ({
   href,
   preview,
   previewAlt,
+  fitPreview = false,
 }: {
   title: string;
   desc: string;
@@ -71,28 +72,40 @@ const ProjectCard = ({
   href?: string;
   preview: string;
   previewAlt: string;
+  fitPreview?: boolean;
 }) => (
   <motion.article
     whileHover={{ scale: 1.02, rotate: 1 }}
     whileTap={{ scale: 0.98 }}
-    className={`relative cursor-pointer p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4`}
+    className={`relative ${href ? "cursor-pointer" : ""} p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4`}
   >
-    <a
-      href={preview}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`Expand ${title} preview (opens in a new tab)`}
-      className="block bg-white neo-border after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4"
-    >
-      <Image
-        src={preview}
-        alt={previewAlt}
-        width={1440}
-        height={900}
-        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 384px"
-        className="aspect-[8/5] w-full object-contain"
-      />
-    </a>
+    {fitPreview ? (
+      <div className="border-4 border-transparent">
+        <div className="relative aspect-[8/5]">
+          <div className="absolute -left-1 top-1/2 w-[calc(100%+8px)] -translate-y-1/2 neo-border">
+            <Image
+              src={preview}
+              alt={previewAlt}
+              width={1280}
+              height={720}
+              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 384px"
+              className="h-auto w-full"
+            />
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div className="bg-white neo-border">
+        <Image
+          src={preview}
+          alt={previewAlt}
+          width={1440}
+          height={900}
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 384px"
+          className="aspect-[8/5] w-full object-contain"
+        />
+      </div>
+    )}
     <span className="self-start bg-white neo-border px-2 py-1 text-xs font-bold uppercase">
       {status}
     </span>
@@ -114,7 +127,7 @@ const ProjectCard = ({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`View ${title} on GitHub (opens in a new tab)`}
-        className="relative z-10 self-start font-bold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="self-start font-bold underline underline-offset-4 after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4"
       >
         View on GitHub
       </a>
@@ -272,6 +285,7 @@ const Home = () => {
           />
           <ProjectCard
             title="UP77"
+            fitPreview
             preview="/projects/up77.png"
             previewAlt="UP77 in-progress local build showing the player in a pixel-art forest level."
             status="In progress"

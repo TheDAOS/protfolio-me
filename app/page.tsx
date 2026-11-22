@@ -72,15 +72,17 @@ const ProjectCard = ({
   preview: string;
   previewAlt: string;
 }) => (
-  <article
-    className={`p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4`}
+  <motion.article
+    whileHover={{ scale: 1.02, rotate: 1 }}
+    whileTap={{ scale: 0.98 }}
+    className={`relative cursor-pointer p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4`}
   >
     <a
       href={preview}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Expand ${title} preview (opens in a new tab)`}
-      className="block bg-white neo-border focus-visible:outline-2 focus-visible:outline-offset-4"
+      className="block bg-white neo-border after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4"
     >
       <Image
         src={preview}
@@ -112,14 +114,14 @@ const ProjectCard = ({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`View ${title} on GitHub (opens in a new tab)`}
-        className="self-start font-bold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+        className="relative z-10 self-start font-bold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
       >
         View on GitHub
       </a>
     ) : (
       <p className="text-xs font-medium">Private repository</p>
     )}
-  </article>
+  </motion.article>
 );
 
 const Home = () => {

@@ -18,3 +18,5 @@ Working branch: `pe-2`, locally fast-forwarded to `main` on 2026-11-10. Respect 
 - On 2026-11-10, dependencies were upgraded and `npm audit` reported zero vulnerabilities after a clean install. A targeted minimatch 11 override patches a development-only transitive dependency; remove it when upstream supports a patched version. ESLint 9 remains because Next lint plugins do not yet support 10; TypeScript remains on 5 because typescript-eslint requires <6.1. Lottie remains on 2 because version 3 changes its API. Reassess compatibility and advisories during future upgrades.
 
 - Project cards include real Aetherius/UP77 captures and a Mara pipeline diagram, with full-size preview links. Capture provenance is in `docs/PROJECT_VISUALS.md`.
+
+- Project cards retain their original hover scale/rotation and press animation. A stretched native preview link makes the whole card clickable and keyboard accessible, with the GitHub link layered independently.

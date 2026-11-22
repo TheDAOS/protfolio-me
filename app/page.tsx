@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLottie } from "lottie-react";
 import * as cat from "@/lottie/cat.json";
 import { motion } from "framer-motion";
@@ -59,6 +60,8 @@ const ProjectCard = ({
   color,
   status,
   href,
+  preview,
+  previewAlt,
 }: {
   title: string;
   desc: string;
@@ -66,10 +69,28 @@ const ProjectCard = ({
   color: string;
   status: "In progress" | "Prototype";
   href?: string;
+  preview: string;
+  previewAlt: string;
 }) => (
   <article
     className={`p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4`}
   >
+    <a
+      href={preview}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Expand ${title} preview (opens in a new tab)`}
+      className="block bg-white neo-border focus-visible:outline-2 focus-visible:outline-offset-4"
+    >
+      <Image
+        src={preview}
+        alt={previewAlt}
+        width={1440}
+        height={900}
+        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 384px"
+        className="aspect-[8/5] w-full object-contain"
+      />
+    </a>
     <span className="self-start bg-white neo-border px-2 py-1 text-xs font-bold uppercase">
       {status}
     </span>
@@ -230,6 +251,8 @@ const Home = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <ProjectCard
             title="Aetherius"
+            preview="/projects/aetherius.png"
+            previewAlt="Aetherius split Markdown editor and preview displaying sample Field Notes."
             status="In progress"
             desc="A Git-backed Markdown workspace with live preview, backlinks, graph navigation, and offline edits with conflict resolution."
             tags={["React", "TypeScript", "PWA"]}
@@ -238,6 +261,8 @@ const Home = () => {
           />
           <ProjectCard
             title="Mara"
+            preview="/projects/mara-pipeline.svg"
+            previewAlt="Mara pipeline: German PDF, text extraction, terminology handling, local translation, validation checks, and PDF generation."
             status="Prototype"
             desc="A German-to-English document translation pipeline combining PDF extraction, terminology handling, local translation models, and PDF generation."
             tags={["Python", "CTranslate2", "Typst"]}
@@ -245,6 +270,8 @@ const Home = () => {
           />
           <ProjectCard
             title="UP77"
+            preview="/projects/up77.png"
+            previewAlt="UP77 in-progress local build showing the player in a pixel-art forest level."
             status="In progress"
             desc="A pixel-art platformer prototype exploring player animation, collision physics, variable-height jumping, and scrolling environments."
             tags={["Lua", "LÖVE2D", "bump.lua"]}

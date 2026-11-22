@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLottie } from "lottie-react";
 import * as cat from "@/lottie/cat.json";
 import { motion } from "framer-motion";
@@ -57,20 +58,44 @@ const ProjectCard = ({
   desc,
   tags,
   color,
+  status,
+  href,
+  preview,
+  previewAlt,
 }: {
   title: string;
   desc: string;
   tags: string[];
   color: string;
+  status: "In progress" | "Prototype";
+  href?: string;
+  preview: string;
+  previewAlt: string;
 }) => (
-  <motion.div
+  <motion.article
     whileHover={{ scale: 1.02, rotate: 1 }}
     whileTap={{ scale: 0.98 }}
-    className={`p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4 cursor-pointer`}
+    className={`relative cursor-pointer p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4`}
   >
-    <div className="bg-white neo-border p-2 aspect-video flex items-center justify-center font-mono text-[10px] md:text-sm uppercase text-center">
-      [ Project Preview ]
-    </div>
+    <a
+      href={preview}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Expand ${title} preview (opens in a new tab)`}
+      className="block bg-white neo-border after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4"
+    >
+      <Image
+        src={preview}
+        alt={previewAlt}
+        width={1440}
+        height={900}
+        sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 384px"
+        className="aspect-[8/5] w-full object-contain"
+      />
+    </a>
+    <span className="self-start bg-white neo-border px-2 py-1 text-xs font-bold uppercase">
+      {status}
+    </span>
     <h3 className="text-xl md:text-2xl font-black uppercase">{title}</h3>
     <p className="font-medium leading-tight text-sm md:text-base">{desc}</p>
     <div className="mt-auto flex flex-wrap gap-2">
@@ -83,7 +108,20 @@ const ProjectCard = ({
         </span>
       ))}
     </div>
-  </motion.div>
+    {href ? (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${title} on GitHub (opens in a new tab)`}
+        className="relative z-10 self-start font-bold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+      >
+        View on GitHub
+      </a>
+    ) : (
+      <p className="text-xs font-medium">Private repository</p>
+    )}
+  </motion.article>
 );
 
 const Home = () => {
@@ -214,21 +252,31 @@ const Home = () => {
         <SectionTitle>Selected Works</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <ProjectCard
-            title="SoundByte Mobile"
-            desc="A voice-journaling app that auto-tunes your morning grumbles into beautiful podcast episodes."
-            tags={["Flutter", "Swift", "Dart"]}
+            title="Aetherius"
+            preview="/projects/aetherius.png"
+            previewAlt="Aetherius split Markdown editor and preview displaying sample Field Notes."
+            status="In progress"
+            desc="A Git-backed Markdown workspace with live preview, backlinks, graph navigation, and offline edits with conflict resolution."
+            tags={["React", "TypeScript", "PWA"]}
             color="bg-neo-yellow"
+            href="https://github.com/TheDAOS/Aetherius"
           />
           <ProjectCard
-            title="Cyber Cat Analytics"
-            desc="A database analytics tool that translates your cat's meows into optimized SQL queries."
-            tags={["Next.js", "TS", "Tailwind"]}
+            title="Mara"
+            preview="/projects/mara-pipeline.svg"
+            previewAlt="Mara pipeline: German PDF, text extraction, terminology handling, local translation, validation checks, and PDF generation."
+            status="Prototype"
+            desc="A German-to-English document translation pipeline combining PDF extraction, terminology handling, local translation models, and PDF generation."
+            tags={["Python", "CTranslate2", "Typst"]}
             color="bg-neo-cyan"
           />
           <ProjectCard
-            title="FitTrack Pro"
-            desc="A native Android tracker that yells Kotlin syntax errors at you if you stop walking."
-            tags={["Kotlin", "Android", "Compose"]}
+            title="UP77"
+            preview="/projects/up77.png"
+            previewAlt="UP77 in-progress local build showing the player in a pixel-art forest level."
+            status="In progress"
+            desc="A pixel-art platformer prototype exploring player animation, collision physics, variable-height jumping, and scrolling environments."
+            tags={["Lua", "LÖVE2D", "bump.lua"]}
             color="bg-neo-pink"
           />
         </div>

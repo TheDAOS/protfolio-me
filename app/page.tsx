@@ -57,20 +57,22 @@ const ProjectCard = ({
   desc,
   tags,
   color,
+  status,
+  href,
 }: {
   title: string;
   desc: string;
   tags: string[];
   color: string;
+  status: "In progress" | "Prototype";
+  href?: string;
 }) => (
-  <motion.div
-    whileHover={{ scale: 1.02, rotate: 1 }}
-    whileTap={{ scale: 0.98 }}
-    className={`p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4 cursor-pointer`}
+  <article
+    className={`p-5 md:p-6 neo-border neo-shadow-lg ${color} flex flex-col gap-3 md:gap-4`}
   >
-    <div className="bg-white neo-border p-2 aspect-video flex items-center justify-center font-mono text-[10px] md:text-sm uppercase text-center">
-      [ Project Preview ]
-    </div>
+    <span className="self-start bg-white neo-border px-2 py-1 text-xs font-bold uppercase">
+      {status}
+    </span>
     <h3 className="text-xl md:text-2xl font-black uppercase">{title}</h3>
     <p className="font-medium leading-tight text-sm md:text-base">{desc}</p>
     <div className="mt-auto flex flex-wrap gap-2">
@@ -83,7 +85,20 @@ const ProjectCard = ({
         </span>
       ))}
     </div>
-  </motion.div>
+    {href ? (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${title} on GitHub (opens in a new tab)`}
+        className="self-start font-bold underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
+      >
+        View on GitHub
+      </a>
+    ) : (
+      <p className="text-xs font-medium">Private repository</p>
+    )}
+  </article>
 );
 
 const Home = () => {
@@ -214,21 +229,25 @@ const Home = () => {
         <SectionTitle>Selected Works</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <ProjectCard
-            title="SoundByte Mobile"
-            desc="A voice-journaling app that auto-tunes your morning grumbles into beautiful podcast episodes."
-            tags={["Flutter", "Swift", "Dart"]}
+            title="Aetherius"
+            status="In progress"
+            desc="A Git-backed Markdown workspace with live preview, backlinks, graph navigation, and offline edits with conflict resolution."
+            tags={["React", "TypeScript", "PWA"]}
             color="bg-neo-yellow"
+            href="https://github.com/TheDAOS/Aetherius"
           />
           <ProjectCard
-            title="Cyber Cat Analytics"
-            desc="A database analytics tool that translates your cat's meows into optimized SQL queries."
-            tags={["Next.js", "TS", "Tailwind"]}
+            title="Mara"
+            status="Prototype"
+            desc="A German-to-English document translation pipeline combining PDF extraction, terminology handling, local translation models, and PDF generation."
+            tags={["Python", "CTranslate2", "Typst"]}
             color="bg-neo-cyan"
           />
           <ProjectCard
-            title="FitTrack Pro"
-            desc="A native Android tracker that yells Kotlin syntax errors at you if you stop walking."
-            tags={["Kotlin", "Android", "Compose"]}
+            title="UP77"
+            status="In progress"
+            desc="A pixel-art platformer prototype exploring player animation, collision physics, variable-height jumping, and scrolling environments."
+            tags={["Lua", "LÖVE2D", "bump.lua"]}
             color="bg-neo-pink"
           />
         </div>

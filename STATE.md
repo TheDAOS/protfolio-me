@@ -1,14 +1,15 @@
 # protfolio-me — Current state
 
-Personal portfolio for Sanju, built with Next.js 16 App Router, React 19, TypeScript and Tailwind CSS 4. The site is a single animated, neo-brutalist page; the three displayed project cards are **dummy data**, per the owner. Repository: `TheDAOS/protfolio-me`.
+Personal portfolio for Sanju, built with Next.js 16 App Router, React 19, TypeScript and Tailwind CSS 4. The site is a single animated, neo-brutalist page; the selected projects are Aetherius and UP77 (in progress), and Mara (prototype). Repository: `TheDAOS/protfolio-me`.
 
 Working branch: `pe-2`, locally fast-forwarded to `main` on 2026-11-10. Respect branch protection; use the required review workflow.
 
 ## Current behavior
 - Hero, animated cat, scroll-driven technology strip, project cards, About section, contact/social links and footer all live in `app/page.tsx`.
 - `app/layout.tsx` supplies metadata, Geist fonts and existing Vercel Analytics/Speed Insights. `app/robots.ts` and `app/sitemap.ts` refer to `https://sanju.fyi`.
-- Navigation anchors and contact links have destinations; the hero's MY WORK and RESUME buttons and project cards have no action. Cards show placeholder previews.
-- The user has not yet specified portfolio improvements or supplied real project content.
+- Navigation anchors and contact links have destinations; the hero's MY WORK and RESUME buttons have no action. Aetherius links to its public source; Mara and UP77 are labeled as private repositories.
+- SEO metadata uses Sanju as the professional identity and Frontend Developer as the role, with a canonical homepage URL and ProfilePage/Person structured data. Project descriptions reflect reviewed implementation without claiming completed products.
+- The sitemap omits an artificial build-time modification date.
 
 ## Baseline and follow-up
 - The desktop technology-strip fallback has deterministic tests (`node --test tests/tech-strip-fallback.test.mjs`). Other verification includes ESLint, TypeScript, and `scripts/smoke.sh` (local HTTP check). Production builds use `next/font/google`, which may require network access.
